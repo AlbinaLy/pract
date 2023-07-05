@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int p;
+    printf("Enter the number of digits p: ");
+    scanf("%d", &p);
+
+    // Обчислення кількості чисел
+    int count = pow(2, p) - (p - 2);
+
+    // Виведення результату
+    printf("Number of numbers with %d digits: %d\n", p, count);
+
+    return 0;
+}
