@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter the length of the sequence n: ");
+    scanf("%d", &n);
+
+    int dp[n + 1]; // Масив для збереження значень dp
+    dp[0] = 1;
+    dp[1] = 2;
+    dp[2] = 3;
+
+    // Обчислення dp[i] для i = 3 до n
+    for (int i = 3; i <= n; i++) {
+        dp[i] = (dp[i - 1] + dp[i - 2]) % 12345;
+    }
+
+    // Виведення результату
+    printf("The number of admissible sequences of length %d: %d\n", n, dp[n]);
+
+    return 0;
+}
