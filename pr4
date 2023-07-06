@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter number n: ");
+    scanf("%d", &n);
+
+    int count = 0; // Лічильник рівних дільників
+
+    // Перебираємо всі можливі значення m від 1 до n
+    for (int m = 1; m <= n; m++) {
+        // Перевіряємо умову n % m == n / m
+        if (n % m == n / m) {
+            count++; // Знайдено рівний дільник, збільшуємо лічильник
+        }
+    }
+
+    // Виведення результату
+    printf("The number of equal divisors of a number %d: %d\n", n, count);
+
+    return 0;
+}
