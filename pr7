@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int x1, y1, r1, x2, y2, r2;
+    printf("Enter the coordinates of the center of the first circle (x1, y1): ");
+    scanf("%d%d", &x1, &y1);
+    printf("Enter the radius of the first circle r1: ");
+    scanf("%d", &r1);
+    printf("Enter the coordinates of the center of the second circle (x2, y2): ");
+    scanf("%d%d", &x2, &y2);
+    printf("Enter the radius of the second circle r2: ");
+    scanf("%d", &r2);
+
+    // Обчислення відстані між центрами окружностей
+    double distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+
+    // Визначення кількості точок перетину
+    int intersectionPoints;
+    if (distance == 0 && r1 == r2) {
+        intersectionPoints = -1; // Безкінечно багато точок перетину
+    } else if (distance <= abs(r1 - r2) || distance >= r1 + r2) {
+        intersectionPoints = 0; // Немає точок перетину
+    } else if (distance == r1 + r2 || distance == abs(r1 - r2)) {
+        intersectionPoints = 1; // Одна точка перетину (торкання)
+    } else {
+        intersectionPoints = 2; // Дві точки перетину
+    }
+
+    // Виведення результату
+    printf("Number of intersection points: %d\n", intersectionPoints);
+
+    return 0;
+}
