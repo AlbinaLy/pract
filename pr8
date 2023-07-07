@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+
+long long factorial(int n) {
+    long long fact = 1;
+    for (int i = 2; i <= n; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+long long count_anagrams(char* word) {
+    int counts[26] = {0}; // Лічильник входжень кожної букви (a-z)
+    int n = strlen(word); // Кількість букв у слові
+
+    // Рахуємо кількість входжень кожної букви
+    for (int i = 0; i < n; i++) {
+        counts[word[i] - 'a']++;
+    }
+
+    // Обчислюємо добуток факторіалів кількостей входжень кожної букви
+    long long num_anagrams = factorial(n);
+    for (int i = 0; i < 26; i++) {
+        if (counts[i] > 1) {
+            num_anagrams /= factorial(counts[i]);
+        }
+    }
+
+    return num_anagrams;
+}
+
+int main() {
+    char word[15];
+    printf("Enter the word: ");
+    scanf("%s", word);
+
+    long long num_anagrams = count_anagrams(word);
+
+    printf("Number of anagrams: %lld\n", num_anagrams);
+
+    return 0;
+}
