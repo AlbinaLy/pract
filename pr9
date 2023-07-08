@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int minSteps(int x, int y) {
+    if (x == y) {
+        return 0; // Немає потреби виконувати жодного кроку
+    } else if (y - x == 1) {
+        return 1; // Потрібен один крок довжиною 1
+    }
+
+    int prevStep = 1;
+    int currStep = 2;
+    int steps = 2;
+
+    while (currStep < y - x) {
+        int temp = currStep;
+        currStep = currStep + prevStep;
+        prevStep = temp;
+        steps++;
+    }
+
+    return steps;
+}
+
+int main() {
+    int x, y;
+    printf("Enter value of x: "); //Вводимо значення першої змінної
+    scanf("%d", &x);
+    printf("Enter value of y: ");//Вводимо значення другої змінної
+    scanf("%d", &y);
+
+    int result = minSteps(x, y);
+
+    printf("Minimum number of steps: %d\n", result);
+
+    return 0;
+}
